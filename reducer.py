@@ -32,6 +32,7 @@ for line in sys.stdin:
     word = obj['word']
     if not current_word:
         current_word = obj['word']
+        stats = {'body':{'frequency': 0, 'location':[]}, 'title':{'frequency': 0, 'location':[]}} #{"body/title":{frequency:, "location":[]}}
         output_result_obj[url] = stats
     # parse the input we got from mapper.py
     # word, count = line.split('\t', 1)
@@ -53,6 +54,7 @@ for line in sys.stdin:
         print json.dumps({current_word:output_result_obj})
         print "\n"
         current_word = word
+        stats = {'body':{'frequency': 0, 'location':[]}, 'title':{'frequency': 0, 'location':[]}} #{"body/title":{frequency:, "location":[]}}
         output_result_obj = {}
         output_result_obj[url] = stats
         if 'body_loc' in obj:
