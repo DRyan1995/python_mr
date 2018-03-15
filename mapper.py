@@ -29,7 +29,8 @@ for line in sys.stdin:
             try:
                 word = word.decode("utf8")
                 word = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+".decode("utf8"), "".decode("utf8"),word)
-                word = word.lower()
+                word = re.sub(ur"[%s]+" %string.punctuation, "", word.decode("utf-8"))
+                # word = word.lower()
             except UnicodeEncodeError as e:
                 continue
             if len(word) == 0:
@@ -44,7 +45,8 @@ for line in sys.stdin:
             try:
                 word = word.decode("utf8")
                 word = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+".decode("utf8"), "".decode("utf8"),word)
-                word = word.lower()
+                word = re.sub(ur"[%s]+" %string.punctuation, "", word.decode("utf-8"))
+                # word = word.lower()
             except UnicodeEncodeError as e:
                 continue
             if len(word) == 0:
