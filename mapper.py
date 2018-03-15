@@ -5,7 +5,7 @@
 import sys
 import re
 import json
-
+import string
 
 # input comes from STDIN (standard input)
 for line in sys.stdin:
