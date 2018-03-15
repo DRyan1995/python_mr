@@ -25,8 +25,11 @@ for line in sys.stdin:
         words = obj['body'].split(' ')
         for word in words:
             loc += 1
-            word = word.decode("utf8")
-            word = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+".decode("utf8"), "".decode("utf8"),word)
+            try:
+                word = word.decode("utf8")
+                word = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+".decode("utf8"), "".decode("utf8"),word)
+            except UnicodeEncodeError as e:
+                continue
             if len(word) == 0:
                 continue
             print json.dumps({"word": word, "body_loc": loc})
@@ -36,8 +39,11 @@ for line in sys.stdin:
         words = obj['title'].split(' ')
         for word in words:
             loc += 1
-            word = word.decode("utf8")
-            word = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+".decode("utf8"), "".decode("utf8"),word)
+            try:
+                word = word.decode("utf8")
+                word = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+".decode("utf8"), "".decode("utf8"),word)
+            except UnicodeEncodeError as e:
+                continue
             if len(word) == 0:
                 continue
             print json.dumps({"word": word, "title_loc": loc})
