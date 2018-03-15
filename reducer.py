@@ -18,9 +18,11 @@ stats = {'body':{'frequency': 0, 'location':[]}, 'title':{'frequency': 0, 'locat
 # input comes from STDIN
 for line in sys.stdin:
     # remove leading and trailing whitespace
-    line = line.strip()
+    # line = line.strip()
+    if len(line.split()) != 2:
+        continue
     try:
-        obj = json.loads(line) # obj here {"word": word, "body_loc/title_loc": }
+        obj = json.loads(line.split(' ')[1]) # obj here {"word": word, "body_loc/title_loc": }
     except ValueError as e:
         continue
 
@@ -39,14 +41,14 @@ for line in sys.stdin:
         # current_count += count
         if 'body_loc' in obj:
             output_result_obj['body']['frequency'] += 1
-            output_result_obj['body']['location'].append(body_loc)
+            output_result_obj['body']['location'].append(obj['body_loc'])
         if 'title_loc' in obj:
             output_result_obj['title']['frequency'] += 1
-            output_result_obj['title']['location'].append(body_loc)
-
+            output_result_obj['title']['location'].append(obj['title_loc'])
     else:
         if current_word:
             pass
+            # print current_word
             # write result to STDOUT
             # print '%s\t%s' % (current_word, current_count)
         # current_count = count
