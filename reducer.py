@@ -41,10 +41,10 @@ for line in sys.stdin:
     if current_word == word:
         if url not in output_result_obj:
             output_result_obj[url] = stats
-        if 'body_loc' in obj:
+        if 'body_loc' in obj and obj['body_loc'] not in output_result_obj[url]['body']['location']:
             output_result_obj[url]['body']['frequency'] += 1
             output_result_obj[url]['body']['location'].append(obj['body_loc'])
-        if 'title_loc' in obj:
+        if 'title_loc' in obj and obj['title_loc'] not in output_result_obj[url]['title']['location']:
             output_result_obj[url]['title']['frequency'] += 1
             output_result_obj[url]['title']['location'].append(obj['title_loc'])
     else:
