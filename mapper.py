@@ -32,7 +32,7 @@ for line in sys.stdin:
                 continue
             if len(word) == 0:
                 continue
-            print "{} {}\n".format(word, json.dumps({"word": word, "body_loc": loc}))
+            print "{}\t{}\n".format(word, json.dumps({"word": word, "body_loc": loc}))
 
     if 'title' in obj:
         loc = -1
@@ -46,7 +46,7 @@ for line in sys.stdin:
                 continue
             if len(word) == 0:
                 continue
-            print "{} {}\n".format(word, json.dumps({"word": word, "title_loc": loc}))
+            print "{}\t{}\n".format(word, json.dumps({"word": word, "title_loc": loc}))
     #
     # words = line.split()
     # # increase counters

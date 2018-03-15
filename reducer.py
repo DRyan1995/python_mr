@@ -18,7 +18,7 @@ stats = {'body':{'frequency': 0, 'location':[]}, 'title':{'frequency': 0, 'locat
 for line in sys.stdin:
     # remove leading and trailing whitespace
     # line = line.strip()
-    if len(line.split()) != 2:
+    if len(line.split('\t')) != 2:
         continue
     try:
         obj = json.loads(line.split(' ')[1]) # obj here {"word": word, "body_loc/title_loc": }
