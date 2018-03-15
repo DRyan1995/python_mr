@@ -21,7 +21,7 @@ for line in sys.stdin:
     if len(line.split('\t')) != 2:
         continue
     try:
-        obj = json.loads(line.split(' ')[1]) # obj here {"word": word, "body_loc/title_loc":, "url":url }
+        obj = json.loads(line.split('\t')[1]) # obj here {"word": word, "body_loc/title_loc":, "url":url }
     except ValueError as e:
         continue
 
