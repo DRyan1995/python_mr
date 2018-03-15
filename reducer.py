@@ -26,6 +26,7 @@ for line in sys.stdin:
         continue
 
     if 'word' not in obj or 'url' not in obj or ('body_loc' not in obj and 'title_loc' not in obj):
+        print obj
         continue
     url = obj['url']
     word = obj['word']
