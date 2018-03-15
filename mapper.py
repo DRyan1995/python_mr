@@ -24,6 +24,7 @@ for line in sys.stdin:
         loc = -1
         words = obj['body'].split(' ')
         for word in words:
+            url = obj['url']
             loc += 1
             try:
                 word = word.decode("utf8")
@@ -32,7 +33,7 @@ for line in sys.stdin:
                 continue
             if len(word) == 0:
                 continue
-            print "{}\t{}\n".format(word, json.dumps({"word": word, "body_loc": loc}))
+            print "{}\t{}\n".format(word, json.dumps({"word": word, "url": url, "body_loc": loc}))
 
     if 'title' in obj:
         loc = -1
@@ -46,7 +47,7 @@ for line in sys.stdin:
                 continue
             if len(word) == 0:
                 continue
-            print "{}\t{}\n".format(word, json.dumps({"word": word, "title_loc": loc}))
+            print "{}\t{}\n".format(word, json.dumps({"word": word, "url": url, "title_loc": loc}))
     #
     # words = line.split()
     # # increase counters
